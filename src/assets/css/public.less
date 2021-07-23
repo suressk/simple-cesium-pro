@@ -1,0 +1,215 @@
+.d-flex,
+.flex-between,
+.flex-center,
+.flex-around,
+.flex-wrap,
+.flex-end,
+.flex-col-center {
+  display: flex;
+  align-items: center;
+}
+.flex-between {
+  justify-content: space-between;
+}
+.flex-center{
+  justify-content: center;
+}
+.flex-around{
+  justify-content: space-around;
+}
+.flex-end{
+  justify-content: flex-end;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-col-center {
+  flex-direction: column;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.drag-box {
+  position: relative;
+  width: 100%;
+  transition: all .3s ease-in-out;
+  .icon-close {
+    position: absolute;
+    z-index: 9;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+    padding: 10px;
+    &:hover {
+      color: #00ccff;
+    }
+  }
+}
+
+@level1: rgb(102, 153, 0);
+@level2: rgb(255, 153, 0);
+@level3: rgb(255, 102, 0);
+@level4: rgb(204, 102, 0);
+@level5: rgb(255, 51, 51);
+// 测量值
+.mst-card-content {
+  .level-item {
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 0;
+    .mst-val {
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+  .level-bg-0 {
+    background-color: @level1;
+  }
+  .level-bg-1 {
+    background-color: @level2;
+  }
+  .level-bg-2 {
+    background-color: @level3;
+  }
+  .level-bg-3 {
+    background-color: @level4;
+  }
+  .level-bg-4 {
+    background-color: @level5;
+  }
+}
+
+// 拖拽插件样式修改
+.draggable {
+  &.vdr {
+    position: relative;
+  }
+  .handle {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+
+    &.handle-ml,
+    &.handle-mr {
+      cursor: w-resize;
+      top: 50%;
+      width: 0.2vw;
+      height: 1.5vw;
+      background-color: #1af5f5;
+      transform: translateY(-50%);
+    }
+
+    &.handle-tm,
+    &.handle-bm {
+      cursor: n-resize;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #1af5f5;
+      height: 0.2vw;
+      width: 1.5vw;
+    }
+
+    &.handle-tr,
+    &.handle-bl {
+      cursor: ne-resize;
+      width: 0.6vw;
+      height: 0.6vw;
+    }
+
+    &.handle-tl,
+    &.handle-br {
+      cursor: nw-resize;
+      width: 0.6vw;
+      height: 0.6vw;
+    }
+
+    &.handle-tm {
+      top: -0.2vw;
+      transform-origin: 50% 0;
+    }
+
+    &.handle-bm {
+      transform-origin: 50% 100%;
+      bottom: -0.2vw;
+    }
+
+
+    &.handle-tl {
+      transform-origin: 0 0;
+      left: -0.2vw;
+      top: -0.2vw;
+      border-left: 0.2vw solid #1af5f5;
+      border-top: 0.2vw solid #1af5f5;
+    }
+
+    &.handle-tr {
+      transform-origin: 100% 0;
+      top: -0.2vw;
+      right: -0.2vw;
+      border-top: 0.2vw solid #1af5f5;
+      border-right: 0.2vw solid #1af5f5;
+    }
+
+    &.handle-bl {
+      transform-origin: 0 100%;
+      left: -0.2vw;
+      bottom: -0.2vw;
+      border-left: 0.2vw solid #1af5f5;
+      border-bottom: 0.2vw solid #1af5f5;
+    }
+
+    &.handle-br {
+      transform-origin: 100% 100%;
+      right: -0.2vw;
+      bottom: -0.2vw;
+      border-right: 0.2vw solid #1af5f5;
+      border-bottom: 0.2vw solid #1af5f5;
+    }
+
+    &.handle-ml {
+      transform-origin: 0 50%;
+      left: -0.2vw;
+    }
+
+    &.handle-mr {
+      transform-origin: 100% 50%;
+      right: -0.2vw;
+    }
+  }
+}
+
+.posi-center {
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+}
+
+// 整体
+.scroller::-webkit-scrollbar{
+  width: 10px;
+}
+// 轨道
+.scroller::-webkit-scrollbar-track {
+  width: 10px;
+  background-color: rgba(0, 0, 0, .05);
+}
+// 滑块
+.scroller::-webkit-scrollbar-thumb {
+  width: 10px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .2);
+  transition: all .3s;
+  &:hover {
+    background-color: rgba(0, 0, 0, .4);
+  }
+}
+// 箭头
+.scroller::-webkit-scrollbar-button {
+  display: none;
+}
